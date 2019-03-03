@@ -2,12 +2,15 @@
 
 This media player uses an google Exoplayer in android to play the media files.
 
-**Note:  the media player is inspired and developer by google plugin video_player and uses most code of it with extra features.**
+**Note:  the media player is inspired and developer by google plugin video_player and uses most code of it  and added  extra features.**
+
+
+If you don't want to bother with implementing ui widgets and need a readymade video player 
+you can visit  http://flutter-media-player.cf 
 
 ##  Features
 
 * Can play Audio and Video File URLs (mp3, mp4, m3u8 etc) 
-
 * Playlist Support
 * Single Media File Play Support
 * Control over player (play, pause, next, prev, seek etc.)
