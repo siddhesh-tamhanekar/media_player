@@ -19,7 +19,7 @@ you can visit  http://flutter-media-player.cf
 
 
 ##  Screenshots
-
+<p float="left">
 ![some of the screenhosts](https://raw.githubusercontent.com/siddhesh-tamhanekar/siddhesh-tamhanekar.github.io/master/images/screenshots/sc1.png ) 
 
 ![some of the screenhosts](https://raw.githubusercontent.com/siddhesh-tamhanekar/siddhesh-tamhanekar.github.io/master/images/screenshots/sc2.png )
@@ -28,7 +28,7 @@ you can visit  http://flutter-media-player.cf
 
 ![some of the screenhosts](https://raw.githubusercontent.com/siddhesh-tamhanekar/siddhesh-tamhanekar.github.io/master/images/screenshots/sc5.png )
 
-  
+  </p>
 
 ## Getting Started
 
