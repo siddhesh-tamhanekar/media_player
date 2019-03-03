@@ -1,0 +1,19 @@
+name: media_player
+description: A media player (based on Exoplayer) currently only supports android allows you to run audio/video files background play and persistent notifications. 
+version: 0.0.3
+author: Siddhesh Tamhanekar <tamhanekar.siddhesh95@gmail.com>
+homepage: https://siddhesh-tamhanekar.github.io
+environment:
+  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+flutter:
+
+  plugin:
+    androidPackage: com.example.mediaplayer
+    pluginClass: MediaPlayerPlugin
+
+ 

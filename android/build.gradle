@@ -1,0 +1,50 @@
+group 'com.example.mediaplayer'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 16
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+    android {
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+    }
+    dependencies {
+        implementation 'com.android.support:appcompat-v7:27.1.1'
+        implementation 'com.android.support:support-media-compat:27.1.1'
+        implementation 'com.google.android.exoplayer:exoplayer-core:2.9.1'
+        implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.1'
+        implementation 'com.google.android.exoplayer:exoplayer-hls:2.9.1'
+        implementation 'com.google.android.exoplayer:exoplayer-dash:2.9.1'
+        implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:2.9.1'
+        implementation 'com.google.android.exoplayer:extension-mediasession:2.9.1'
+    }
+}
