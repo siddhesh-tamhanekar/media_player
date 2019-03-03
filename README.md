@@ -22,7 +22,7 @@ you can visit  http://flutter-media-player.cf
 <p float="left">
 <img src='https://raw.githubusercontent.com/siddhesh-tamhanekar/siddhesh-tamhanekar.github.io/master/images/screenshots/sc1.png' width="200px" style='float:left' >
 <img src='https://raw.githubusercontent.com/siddhesh-tamhanekar/siddhesh-tamhanekar.github.io/master/images/screenshots/sc2.png' width="200px" >
-<img src='https://raw.githubusercontent.com/siddhesh-tamhanekar/siddhesh-tamhanekar.github.io/master/images/screenshots/sc3.png' width="200px" >
+
 <img src='https://raw.githubusercontent.com/siddhesh-tamhanekar/siddhesh-tamhanekar.github.io/master/images/screenshots/sc4.png' width="200px" >
 <img src='https://raw.githubusercontent.com/siddhesh-tamhanekar/siddhesh-tamhanekar.github.io/master/images/screenshots/sc5.png' width="200px" >
 </p>
