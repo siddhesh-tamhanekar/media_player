@@ -30,6 +30,8 @@ import android.content.ComponentName;
 /** MediaPlayerPlugin */
 public class MediaPlayerPlugin implements MethodCallHandler, ViewDestroyListener {
 
+
+
   private final String TAG = "MediaPlayerPlugin";
   private Registrar registrar;
 
@@ -50,9 +52,12 @@ public class MediaPlayerPlugin implements MethodCallHandler, ViewDestroyListener
       Log.i("ServiceConnnection", "Service connection audio service binder complete");
     }
 
+
+
     @Override
     public void onServiceDisconnected(ComponentName componentName) {
-
+    Log.i("ServiceConnnection", "Service disconnected");
+  
     }
   };
 
@@ -61,6 +66,9 @@ public class MediaPlayerPlugin implements MethodCallHandler, ViewDestroyListener
   }
 
   public void createVideoPlayer() {
+
+      this.registrar.addViewDestroyListener(this);
+
     if (call.argument("isBackground")) {
       audioServiceBinder.create(registrar, call, result);
 
@@ -87,6 +95,7 @@ public class MediaPlayerPlugin implements MethodCallHandler, ViewDestroyListener
 
   @Override
   public boolean onViewDestroy(FlutterNativeView flutterNativeView) {
+    Log.i(TAG,"onview destroy called");
     unBoundService();
     return false;
   }
@@ -101,8 +110,13 @@ public class MediaPlayerPlugin implements MethodCallHandler, ViewDestroyListener
   }
 
   private void unBoundService() {
-    if (audioServiceBinder != null)
+    Log.i(TAG, "unbound service called");
+    if (audioServiceBinder != null){
+      audioServiceBinder.destroyAllPlayers();
       registrar.context().unbindService(serviceConnection);
+    Log.i(TAG, "service unbounded");
+
+    }
   }
 
   @Override
@@ -161,7 +175,8 @@ public class MediaPlayerPlugin implements MethodCallHandler, ViewDestroyListener
   }
 
   private void onMethodCall(MethodCall call, Result result, long textureId, VideoPlayer player) {
-    switch (call.method) {
+
+      switch (call.method) {
     case "setSource":
       Map source = (HashMap) call.argument("source");
       Log.d(TAG, "Source=" + source.toString());
@@ -201,6 +216,7 @@ public class MediaPlayerPlugin implements MethodCallHandler, ViewDestroyListener
       result.success(player.getPosition());
       break;
     case "dispose":
+       Log.d(TAG, "calling dispose on player instance android");
       player.dispose();
       boolean background = call.argument("isBackground");
       if (background)
@@ -218,4 +234,5 @@ public class MediaPlayerPlugin implements MethodCallHandler, ViewDestroyListener
       break;
     }
   }
+
 }

@@ -61,6 +61,13 @@ public class AudioServiceBinder extends Binder {
         return videoPlayers.get(textureId);
     }
 
+    public void destroyAllPlayers() {
+        for (Long key : videoPlayers.keySet()) {
+            videoPlayers.get(key).dispose();
+            // System.out.println("Key = " + key);
+        }
+    }
+
     public void removePlayer(long textureId) {
         videoPlayers.remove(textureId);
     }

@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: MyVideoScreen(),
       ),
-      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -27,58 +26,33 @@ class MyVideoScreen extends StatefulWidget {
 class _MyVideoScreenState extends State<MyVideoScreen> {
   MediaPlayer player;
   MediaFile song1 = MediaFile(
-    title: "Despacito 1",
+    title: "Song 1",
     type: "video",
-    source:
-        "https://firebasestorage.googleapis.com/v0/b/mziki-d37f5.appspot.com/o/---Rj%20Kanierra%20Brassard%20Clip%20Officiel%20by%20King%20Inter10ment%20-%20YouTube.mp3?alt=media&token=1b8f96f4-670c-4a10-b616-7f7d6fb0e3b8",
-    desc: "Lorem  ipsum desit.",
+    source: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8",
+    // source: "http://10.42.0.1/video.mp4", // this is my personal local server link when i don't have internet. u can ignore this.
+    desc: "Note from Apple",
   );
-  // MediaFile song2 = MediaFile(
-  //   title: "Apple Keynote 2",
-  //   type: "video",
-  //   source: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8",
-  //   desc: "Lorem  ipsum desit.",
-  // );
-  // MediaFile song3 = MediaFile(
-  //   title: "Some m3u8 test",
-  //   type: "audio",
-  //   source: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
-  //   desc: "Lorem  ipsum desit.",
-  // );
 
-  bool next = false;
-  bool prev = false;
-  var source;
-  int currentIndex = 0;
   @override
   void initState() {
     // first argument for isBackground next for showNotification.
     player =
         MediaPlayerPlugin.create(isBackground: true, showNotification: true);
     initVideo();
-    player.valueNotifier.addListener(() {
-      if (!mounted) return;
-      next = player.valueNotifier.value.next;
-      prev = player.valueNotifier.value.prev;
-      source = player.valueNotifier.value.source;
-      currentIndex = player.valueNotifier.value.currentIndex;
-      setState(() {});
-    });
     super.initState();
   }
 
   @override
   void dispose() {
-    player.dispose();
     super.dispose();
+
+    print("dispose called");
+    player.dispose();
   }
 
   void initVideo() async {
-    // Playlist playlist = Playlist([song1, song2, song3]);
     await player.initialize();
-    player.setSource(playlist);
-    player.setSource(song1);
-    // await player.setPlaylist(playlist);
+    await player.setSource(song1);
     player.play();
   }
 
@@ -92,46 +66,18 @@ class _MyVideoScreenState extends State<MyVideoScreen> {
         padding: EdgeInsets.symmetric(vertical: 5.0),
       ),
       SizedBox(height: 20.0),
-      // source != null
-      //     ? Container(
-      //         child: Text(source.contents[currentIndex].title),
-      //       )
-      //     : Container(),
-      buildButtons(),
-      // Expanded(child: _playlist())
+      buildButtons()
     ]);
   }
 
-  // Widget _playlist() {
-  //   return (source is Playlist)
-  //       ? ListView.builder(
-  //           itemCount: source.count,
-  //           itemBuilder: (BuildContext context, index) {
-  //             return ListTile(
-  //                 title: Text(source.contents[index].title),
-  //                 trailing: IconButton(
-  //                   onPressed: () {
-  //                     player.playAt(index);
-  //                   },
-  //                   icon: Icon((currentIndex == index)
-  //                       ? Icons.pause
-  //                       : Icons.play_arrow),
-  //                 ));
-  //           },
-  //         )
-  //       : Container();
-  // }
-
-  Row buildButtons() {
-    return Row(
+  Widget buildButtons() {
+    return Wrap(
       children: <Widget>[
         FlatButton(
           child: Text("Prev"),
-          onPressed: (prev)
-              ? () {
-                  player.playPrev();
-                }
-              : null,
+          onPressed: () {
+            player.playPrev();
+          },
         ),
         FlatButton(
           child: Text("Play"),
@@ -147,11 +93,15 @@ class _MyVideoScreenState extends State<MyVideoScreen> {
         ),
         FlatButton(
           child: Text("Next"),
-          onPressed: next
-              ? () {
-                  player.playNext();
-                }
-              : null,
+          onPressed: () {
+            player.playNext();
+          },
+        ),
+        FlatButton(
+          child: Text("stop"),
+          onPressed: () {
+            player.dispose();
+          },
         ),
       ],
     );

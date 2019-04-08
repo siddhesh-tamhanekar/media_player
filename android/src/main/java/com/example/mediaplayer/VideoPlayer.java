@@ -298,16 +298,25 @@ class VideoPlayer {
     }
 
     void dispose() {
+        Log.i(TAG, "dispose called");
         if (isInitialized) {
             exoPlayer.stop();
+            Log.i(TAG, "exoplayer stopped");
         }
         textureEntry.release();
+        Log.i(TAG, "textureenry released");
         eventChannel.setStreamHandler(null);
+        Log.i(TAG, "event channel stopped");
+
         if (surface != null) {
             surface.release();
+            Log.i(TAG, "surface released");
+
         }
         if (exoPlayer != null) {
             exoPlayer.release();
+            Log.i(TAG, "exoplayer released");
+
         }
     }
 }

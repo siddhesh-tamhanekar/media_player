@@ -1,6 +1,6 @@
 name: media_player
 description: A media player (based on Exoplayer) currently only supports android allows you to run audio/video files background play and persistent notifications. 
-version: 0.0.3
+version: 0.0.6
 author: Siddhesh Tamhanekar <tamhanekar.siddhesh95@gmail.com>
 homepage: https://siddhesh-tamhanekar.github.io
 environment:

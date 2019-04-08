@@ -2,11 +2,19 @@
 
 This media player uses an google Exoplayer in android to play the media files.
 
-**Note:  the media player is inspired and developer by google plugin video_player and uses most code of it  and added  extra features.**
+**Note:  the media player is inspired and developer by google plugin video_player and uses most code of it  and has extra features.**
 
 
 If you don't want to bother with implementing ui widgets and need a readymade video player 
-you can visit  http://flutter-media-player.cf 
+Please visit  http://flutter-media-player.cf 
+
+Github Link : https://github.com/siddhesh-tamhanekar/media_player
+
+Getting Started Tutorial at medium: https://medium.com/google-exoplayer/dynamic-playlists-with-exoplayer-6f53e54a56c0
+
+Please subscribe to our mailing list for get new updates.
+https://goo.gl/forms/RTnApDBve4scuUAu2
+
 
 ##  Features
 
@@ -16,6 +24,7 @@ you can visit  http://flutter-media-player.cf
 * Control over player (play, pause, next, prev, seek etc.)
 * can be used to create background player(mostly used for audio playing).
 * Persistent Notification
+* Retry method in order to make player start from where left (if internet connection was problem)
 
 
 ##  Screenshots
@@ -88,7 +97,7 @@ class MyVideoScreen extends StatefulWidget {
 }
 
 class _MyVideoScreenState extends State<MyVideoScreen> {
-  VideoPlayer player;
+  MediaPlayer player;
   MediaFile song1 = MediaFile(
     title: "Song 1",
     type: "video",

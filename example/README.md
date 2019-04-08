@@ -3,8 +3,8 @@
 Demonstrates how to use the media_player plugin.
 
 
-If you don't want to bother with implementing ui widgets and need a readymade video player 
-you can visit  http://flutter-media-player.cf 
+If you don't want to bother with implementing ui widgets and need a readymade video player UI,
+visit the http://flutter-media-player.cf 
 
 ## Simple Example
 
@@ -35,7 +35,7 @@ class MyVideoScreen extends StatefulWidget {
 }
 
 class _MyVideoScreenState extends State<MyVideoScreen> {
-  VideoPlayer player;
+  MediaPlayer player;
   MediaFile song1 = MediaFile(
     title: "Song 1",
     type: "video",
