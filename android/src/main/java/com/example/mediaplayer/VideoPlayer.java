@@ -183,10 +183,10 @@ class VideoPlayer {
             @Override
             public void onPositionDiscontinuity(@Player.DiscontinuityReason int reason) {
                 Log.i(TAG, "position changed called" + reason);
-                if (reason == Player.DISCONTINUITY_REASON_PERIOD_TRANSITION)
+                if ((reason == 1 || reason == 2) && prevValue != exoPlayer.getCurrentWindowIndex()){
+                    isInitialized = false;                    
                     sendInitialized();
-                if ((reason == 1 || reason == 2) && prevValue != exoPlayer.getCurrentWindowIndex())
-                    sendInitialized();
+                }
             }
 
             @Override
