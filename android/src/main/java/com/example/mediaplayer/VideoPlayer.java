@@ -140,7 +140,14 @@ class VideoPlayer {
     }
 
     private MediaSource buildMediaSource(Uri uri, DataSource.Factory mediaDataSourceFactory, Context context) {
-        int type = Util.inferContentType(uri.getLastPathSegment());
+        int type = C.TYPE_OTHER;
+
+        try{
+            type = Util.inferContentType(uri.getLastPathSegment());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        
         switch (type) {
         case C.TYPE_SS:
             return new SsMediaSource.Factory(new DefaultSsChunkSource.Factory(mediaDataSourceFactory),
