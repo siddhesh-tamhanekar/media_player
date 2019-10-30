@@ -19,7 +19,7 @@ import com.google.android.exoplayer2.ui.PlayerNotificationManager.NotificationLi
 import android.support.v4.media.session.MediaSessionCompat;
 import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector;
 import com.google.android.exoplayer2.ext.mediasession.TimelineQueueNavigator;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.support.v4.media.MediaDescriptionCompat;
 
 class PersistentNotification {
