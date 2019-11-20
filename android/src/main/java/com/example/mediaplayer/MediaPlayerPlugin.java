@@ -42,6 +42,7 @@ public class MediaPlayerPlugin implements MethodCallHandler, ViewDestroyListener
 
   private MethodCall call = null;
   private Result result = null;
+  private boolean bound = false;
 
   private ServiceConnection serviceConnection = new ServiceConnection() {
     @Override
@@ -50,14 +51,15 @@ public class MediaPlayerPlugin implements MethodCallHandler, ViewDestroyListener
       audioServiceBinder = (AudioServiceBinder) iBinder;
       createVideoPlayer();
       Log.i("ServiceConnnection", "Service connection audio service binder complete");
+      bound = true;
     }
 
 
 
     @Override
     public void onServiceDisconnected(ComponentName componentName) {
-    Log.i("ServiceConnnection", "Service disconnected");
-  
+      Log.i("ServiceConnnection", "Service disconnected");
+      bound = false;
     }
   };
 
@@ -113,7 +115,10 @@ public class MediaPlayerPlugin implements MethodCallHandler, ViewDestroyListener
     Log.i(TAG, "unbound service called");
     if (audioServiceBinder != null){
       audioServiceBinder.destroyAllPlayers();
-      registrar.context().unbindService(serviceConnection);
+      if(bound) {
+        registrar.context().unbindService(serviceConnection);
+        bound = false;
+      }
     Log.i(TAG, "service unbounded");
 
     }
