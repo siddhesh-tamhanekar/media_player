@@ -41,7 +41,7 @@ import com.google.android.exoplayer2.upstream.DefaultHttpDataSource;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import com.google.android.exoplayer2.Timeline;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import static com.google.android.exoplayer2.Player.REPEAT_MODE_ALL;
 import static com.google.android.exoplayer2.Player.REPEAT_MODE_OFF;
@@ -140,7 +140,14 @@ class VideoPlayer {
     }
 
     private MediaSource buildMediaSource(Uri uri, DataSource.Factory mediaDataSourceFactory, Context context) {
-        int type = Util.inferContentType(uri.getLastPathSegment());
+        int type = C.TYPE_OTHER;
+
+        try{
+            type = Util.inferContentType(uri.getLastPathSegment());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        
         switch (type) {
         case C.TYPE_SS:
             return new SsMediaSource.Factory(new DefaultSsChunkSource.Factory(mediaDataSourceFactory),
